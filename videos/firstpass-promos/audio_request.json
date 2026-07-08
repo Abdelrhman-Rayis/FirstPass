@@ -1,0 +1,48 @@
+{
+  "provider": "auto",
+  "speed": 1,
+  "lines": [
+    {
+      "id": "01",
+      "text": "Eighty percent of a contract is boilerplate. Agreed a hundred times before. Yet every single one still gets a full cold read — by a scarce, expensive human."
+    },
+    {
+      "id": "02",
+      "text": "End of quarter, the sales team is waiting. The queue is longer than the day. And there is no way to tell the safe contracts from the risky ones. Not until someone reads every single page."
+    },
+    {
+      "id": "03",
+      "text": "Introducing FirstPass. An AI triage layer that reads every contract, checks it against your team's own playbook, and routes it — before a lawyer ever opens the file."
+    },
+    {
+      "id": "04",
+      "text": "This is the queue a lawyer opens each morning. Contracts sorted by risk. Green, auto-clear. Amber, confirm — the redlines are already drafted. Red, escalate — the risky twenty percent, waiting for a human."
+    },
+    {
+      "id": "05",
+      "text": "Key terms already extracted. Every issue shows the evidence, the reason, and the exact redline the team has used before. The lawyer confirms. They do not start from scratch."
+    },
+    {
+      "id": "06",
+      "text": "Measured on a labelled set. Zero unsafe misses — nothing risky was auto-cleared. One hundred percent triage accuracy. And fifty-eight percent of review time removed. About seventy-three legal hours, returned every month."
+    },
+    {
+      "id": "07",
+      "text": "And here is why it compounds. When a lawyer resolves a novel case, it becomes a playbook entry. Next time it is Amber — with the redline pre-drafted. Every human decision permanently shrinks the future queue."
+    },
+    {
+      "id": "08",
+      "text": "It runs entirely on your own servers. The engine needs no model. The reasoning layer is a local, open-weight model. No contract text ever touches the cloud."
+    },
+    {
+      "id": "09",
+      "text": "FirstPass. Every contract gets an AI first pass. A human confirms. The queue gets shorter every month."
+    }
+  ],
+  "bgm": {
+    "mode": "retrieve",
+    "query": "Every contract gets an AI first pass. A human confirms. The queue gets shorter every month.",
+    "blob": "Every contract gets an AI first pass. A human confirms. The queue gets shorter every month.",
+    "arc": "Demo Loop — question → product intro → demo cycle 1 → demo cycle 2 → trust → CTA"
+  }
+}

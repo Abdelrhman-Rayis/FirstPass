@@ -22,5 +22,12 @@ Thumbs.db
 # Output (regenerated)
 evals/results.md
 
-# Videos output
+# Videos build artifacts
 videos/firstpass-promos/node_modules/
+videos/firstpass-promos/renders/
+videos/firstpass-promos/.media/
+videos/firstpass-promos/audio_meta.json
+videos/firstpass-promos/audio_engine_meta.json
+videos/firstpass-promos/.hyperframes/
+videos/firstpass-promos/capture/assets/
+videos/firstpass-promos/.agents/

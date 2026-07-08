@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=1920,height=1080"></head>
+<body>
+<template>
+<div id="root" data-composition-id="07-flywheel" data-start="0" data-duration="7.5" data-width="1920" data-height="1080">
+  <div class="clip bg" data-start="0" data-duration="7" data-track-index="0"></div>
+  <div id="head" class="clip" data-start="0" data-duration="7" data-track-index="1">And here is why it compounds.</div>
+  <div id="chain" class="clip" data-start="1.2" data-duration="5.8" data-track-index="2">
+    <span id="r" class="node red">RED</span>
+    <span class="arr">&#8594;</span>
+    <span id="lr" class="node">lawyer resolves</span>
+    <span class="arr">&#8594;</span>
+    <span id="pb" class="node">playbook entry</span>
+    <span class="arr">&#8594;</span>
+    <span id="am" class="node amber">AMBER</span>
+    <span class="arr">&#8594;</span>
+    <span id="qs" class="node final">queue shorter</span>
+  </div>
+  <div id="sub" class="clip" data-start="4.8" data-duration="2.2" data-track-index="3">Every human decision permanently shrinks the future queue.</div>
+</div>
+</template>
+<style>
+  :root{--ink:#15171C;--orange:#E14E12;--cream:#FFFFFF;--muted:#FF6633;--red:#DE3226;--amber:#C07C00}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1920px;height:1080px;overflow:hidden;background:var(--ink)}
+  #root{position:relative;width:1920px;height:1080px;font-family:Arial,sans-serif}
+  .bg{position:absolute;inset:0;background:var(--ink)}
+  #head{position:absolute;top:100px;left:0;right:0;text-align:center;font-size:38px;font-weight:700;color:var(--cream);letter-spacing:-0.02em}
+  #chain{position:absolute;top:350px;left:60px;right:60px;text-align:center;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+  .node{display:inline-block;padding:12px 24px;border-radius:8px;font-size:22px;font-weight:700;color:var(--cream);background:rgba(255,255,255,0.06);border:1px solid #282726}
+  .node.red{color:var(--red);border-color:rgba(222,50,38,0.3);background:rgba(222,50,38,0.1)}
+  .node.amber{color:var(--amber);border-color:rgba(192,124,0,0.3);background:rgba(192,124,0,0.1)}
+  .node.final{color:var(--orange);border-color:rgba(225,78,18,0.4);background:rgba(225,78,18,0.12);font-size:28px}
+  .arr{color:#282726;font-size:24px;margin:0 4px}
+  #sub{position:absolute;bottom:160px;left:0;right:0;text-align:center;font-size:24px;font-weight:400;color:var(--muted);letter-spacing:-0.01em}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<script>
+  window.__timelines=window.__timelines||{};
+  const tl=gsap.timeline({paused:true});
+  tl.fromTo("#head",{opacity:0,y:-10},{opacity:1,y:0,duration:0.5,ease:"power3.out"},0);
+  tl.fromTo("#r",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.5,ease:"power3.out"},1.2);
+  tl.fromTo("#lr",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.5,ease:"power3.out"},2.0);
+  tl.fromTo("#pb",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.5,ease:"power3.out"},2.8);
+  tl.fromTo("#am",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.5,ease:"power3.out"},3.6);
+  tl.fromTo("#qs",{opacity:0,scale:0.5},{opacity:1,scale:1,duration:0.8,ease:"power3.out"},4.4);
+  tl.fromTo("#qs",{textShadow:"0 0 0px rgba(225,78,18,0)"},{textShadow:"0 0 50px rgba(225,78,18,0.5)",duration:1,ease:"power3.in"},5.0);
+  tl.fromTo("#sub",{opacity:0,y:8},{opacity:1,y:0,duration:0.6,ease:"power3.out"},4.8);
+  window.__timelines["07-flywheel"]=tl;
+</script>
+</template>
+</body>
+</html>

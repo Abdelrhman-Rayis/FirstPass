@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Local AI](https://img.shields.io/badge/AI-on--prem%20%7C%20local%20model-12A150)](#private-by-design)
 
-> **Quick links:** [Summary PDF](FirstPass_Summary.pdf) &middot; [Deck (PDF)](deck/FirstPass_PortSwigger.pdf) &middot; [Deck (PPTX)](deck/FirstPass_PortSwigger.pptx)
+> **Quick links:** [Summary PDF](FirstPass_Summary.pdf) &middot; [Deck (PDF)](deck/FirstPass_PortSwigger.pdf) &middot; [Deck (PPTX)](deck/FirstPass_PortSwigger.pptx) &middot; [Demo Video](videos/firstpass-demo.mp4) &middot; [Architecture](assets/AI_Contract_Triage_System.png)
 
 An agentic first-pass reviewer for the standard commercial contracts an in-house
 legal team sees all day: mutual NDAs and customer order forms. It reads each

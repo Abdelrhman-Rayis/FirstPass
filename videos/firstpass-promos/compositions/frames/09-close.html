@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=1920,height=1080"></head>
+<body>
+<template>
+<div id="root" data-composition-id="09-close" data-start="0" data-duration="5" data-width="1920" data-height="1080">
+  <div class="clip bg" data-start="0" data-duration="5" data-track-index="0"></div>
+  <div id="name" class="clip" data-start="0" data-duration="5" data-track-index="1">
+    <span class="nc">F</span><span class="nc">i</span><span class="nc">r</span><span class="nc">s</span><span class="nc">t</span><span class="nc">P</span><span class="nc">a</span><span class="nc">s</span><span class="nc">s</span>
+  </div>
+  <div id="tag1" class="clip tag" data-start="2.0" data-duration="3" data-track-index="2">Every contract gets an AI first pass.</div>
+  <div id="tag2" class="clip tag" data-start="2.6" data-duration="2.4" data-track-index="3">A human confirms.</div>
+  <div id="tag3" class="clip tag" data-start="3.2" data-duration="1.8" data-track-index="4">The queue gets shorter every month.</div>
+  <div id="url" class="clip" data-start="3.8" data-duration="1.2" data-track-index="5">github.com/Abdelrhman-Rayis/FirstPass</div>
+</div>
+</template>
+<style>
+  :root{--ink:#15171C;--orange:#E14E12;--cream:#FFFFFF;--muted:#FF6633}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1920px;height:1080px;overflow:hidden;background:var(--ink)}
+  #root{position:relative;width:1920px;height:1080px;font-family:Arial,sans-serif}
+  .bg{position:absolute;inset:0;background:var(--ink)}
+  #name{position:absolute;top:300px;left:0;right:0;text-align:center;font-size:140px;font-weight:800;color:var(--cream);letter-spacing:-0.04em}
+  .nc{display:inline-block}
+  .tag{position:absolute;left:0;right:0;text-align:center;font-size:26px;font-weight:400;color:var(--muted);letter-spacing:-0.01em}
+  #tag1{top:520px} #tag2{top:565px} #tag3{top:610px}
+  #url{position:absolute;bottom:100px;left:0;right:0;text-align:center;font-family:"IBM Plex Mono",monospace;font-size:18px;font-weight:500;color:var(--orange);letter-spacing:0.12em}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<script>
+  window.__timelines=window.__timelines||{};
+  const tl=gsap.timeline({paused:true});
+  const chars=document.querySelectorAll("#name .nc");
+  chars.forEach((c,i)=>{
+    tl.fromTo(c,{opacity:0,rotationX:-90,y:-20},{opacity:1,rotationX:0,y:0,duration:0.4,ease:"power3.out"},i*0.08);
+  });
+  tl.fromTo("#name",{textShadow:"0 0 0px rgba(225,78,18,0)"},{textShadow:"0 0 70px rgba(225,78,18,0.45)",duration:2,ease:"power3.in"},1.2);
+  tl.to("#name",{scale:1.08,duration:3.5,ease:"power3.in"},1.5);
+  tl.fromTo("#tag1",{opacity:0,y:8},{opacity:1,y:0,duration:0.5,ease:"power3.out"},2.0);
+  tl.fromTo("#tag2",{opacity:0,y:8},{opacity:1,y:0,duration:0.5,ease:"power3.out"},2.6);
+  tl.fromTo("#tag3",{opacity:0,y:8},{opacity:1,y:0,duration:0.5,ease:"power3.out"},3.2);
+  tl.fromTo("#url",{opacity:0},{opacity:1,duration:0.8,ease:"power3.out"},3.8);
+  window.__timelines["09-close"]=tl;
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,30 @@
+FirstPass: AI Contract Triage for In-House Legal Teams
+
+Every contract gets an AI first pass. A human confirms. The queue gets shorter every month.
+
+THE PROBLEM: Most contracts are 80% boilerplate, yet every single one gets a full cold read by a scarce, expensive human. The queue backs up at end of quarter. There is no risk-based triage.
+
+THE SOLUTION: FirstPass is an agentic triage layer that reads NDAs and order forms, checks them against the legal team's playbook of standard positions, and routes each one as GREEN (auto-clear), AMBER (confirm pre-drafted redlines), or RED (escalate to a human). Every human decision feeds back into the playbook, so the queue gets shorter every month.
+
+KEY METRICS:
+- 0 unsafe misses: nothing risky was auto-cleared
+- 100% triage verdict accuracy
+- 93% material-issue recall (no LLM)
+- 58% of human review time removed
+- ~73 legal hours/month saved at 200 contracts/month
+
+HOW IT WORKS:
+1. Ingest the contract file
+2. Classify the type and extract key terms
+3. Retrieve the team's standard positions from the playbook
+4. Detect red flags, deviations, missing clauses, and novel terms
+5. Score findings into GREEN / AMBER / RED
+6. Draft the exact redline the team has used before
+7. Route the decision
+8. LEARN: the lawyer's resolution becomes a playbook entry
+
+PRIVATE BY DESIGN: The deterministic engine needs no model at all. The optional reasoning layer runs on a local open-weight model (Hermes 3) on the institution's own server. No contract text ever leaves the building.
+
+THE FLYWHEEL: When a lawyer resolves a novel RED case, it becomes a playbook entry. Next time it is AMBER with the redline pre-drafted. Every human decision permanently shrinks the future queue.
+
+BUILT FOR: PortSwigger AI Pioneer task. A working prototype, not a slide about one.

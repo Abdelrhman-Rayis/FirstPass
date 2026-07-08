@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=1920,height=1080"></head>
+<body>
+<template>
+<div id="root" data-composition-id="02-problem" data-start="0" data-duration="6.4" data-width="1920" data-height="1080">
+  <div class="clip bg" data-start="0" data-duration="6" data-track-index="0"></div>
+  <div id="line1" class="clip" data-start="0" data-duration="6" data-track-index="1">End of quarter.</div>
+  <div id="line2" class="clip" data-start="1.0" data-duration="5" data-track-index="2">the sales team is waiting.</div>
+  <div id="line3" class="clip" data-start="2.2" data-duration="3.8" data-track-index="3">The queue is longer than the day.</div>
+  <div id="line4" class="clip" data-start="3.4" data-duration="2.6" data-track-index="4">No way to tell safe from risky.</div>
+  <div id="line5" class="clip" data-start="4.6" data-duration="1.4" data-track-index="5">Not until someone reads every single page.</div>
+</div>
+</template>
+<style>
+  :root{--ink:#15171C;--orange:#E14E12;--cream:#FFFFFF;--muted:#FF6633}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1920px;height:1080px;overflow:hidden;background:var(--ink)}
+  #root{position:relative;width:1920px;height:1080px;font-family:Arial,sans-serif}
+  .bg{position:absolute;inset:0;background:var(--ink)}
+  #line1{position:absolute;top:340px;left:0;right:0;text-align:center;font-size:72px;font-weight:800;color:var(--cream);letter-spacing:-0.03em}
+  #line2{position:absolute;top:440px;left:0;right:0;text-align:center;font-size:28px;font-weight:400;color:var(--muted);letter-spacing:-0.01em}
+  #line3{position:absolute;top:560px;left:0;right:0;text-align:center;font-size:48px;font-weight:700;color:var(--cream);letter-spacing:-0.02em}
+  #line4{position:absolute;top:640px;left:0;right:0;text-align:center;font-size:44px;font-weight:700;color:var(--muted);letter-spacing:-0.02em}
+  #line5{position:absolute;top:740px;left:0;right:0;text-align:center;font-size:34px;font-weight:700;color:var(--orange);letter-spacing:-0.01em}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<script>
+  window.__timelines=window.__timelines||{};
+  const tl=gsap.timeline({paused:true});
+  tl.fromTo("#line1",{opacity:0,scale:0.9},{opacity:1,scale:1,duration:0.8,ease:"power3.out"},0);
+  tl.fromTo("#line2",{opacity:0,x:-30},{opacity:1,x:0,duration:0.6,ease:"power3.out"},1.0);
+  tl.fromTo("#line3",{opacity:0,x:40},{opacity:1,x:0,duration:0.7,ease:"power3.out"},2.2);
+  tl.fromTo("#line4",{opacity:0,y:20},{opacity:1,y:0,duration:0.6,ease:"power3.out"},3.4);
+  tl.fromTo("#line5",{opacity:0,scale:0.85},{opacity:1,scale:1,duration:0.7,ease:"power3.out"},4.6);
+  // Slow inward drift on all lines
+  tl.to("#line3",{x:-15,duration:5,ease:"none"},0);
+  tl.to("#line4",{x:15,duration:5,ease:"none"},0);
+  tl.to("#line1",{scale:1.06,duration:6,ease:"none"},0);
+  window.__timelines["02-problem"]=tl;
+</script>
+</template>
+</body>
+</html>

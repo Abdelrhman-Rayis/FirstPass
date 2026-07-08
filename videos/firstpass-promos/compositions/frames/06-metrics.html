@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=1920,height=1080"></head>
+<body>
+<template>
+<div id="root" data-composition-id="06-metrics" data-start="0" data-duration="7.5" data-width="1920" data-height="1080">
+  <div class="clip bg" data-start="0" data-duration="7" data-track-index="0"></div>
+  <div id="kicker" class="clip" data-start="0" data-duration="7" data-track-index="1">Measured on a labelled set.</div>
+  <div id="s1" class="clip stat" data-start="0.8" data-duration="6.2" data-track-index="2"><span class="num">0</span><span class="lbl">unsafe misses</span></div>
+  <div id="s2" class="clip stat" data-start="2.0" data-duration="5" data-track-index="3"><span class="num">100%</span><span class="lbl">triage accuracy</span></div>
+  <div id="s3" class="clip stat" data-start="3.2" data-duration="3.8" data-track-index="4"><span class="num or">58%</span><span class="lbl">review time removed</span></div>
+  <div id="s4" class="clip stat hero" data-start="5.0" data-duration="2" data-track-index="5"><span class="num or">73h</span><span class="lbl">returned every month</span></div>
+</div>
+</template>
+<style>
+  :root{--ink:#15171C;--orange:#E14E12;--cream:#FFFFFF;--muted:#FF6633}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1920px;height:1080px;overflow:hidden;background:var(--ink)}
+  #root{position:relative;width:1920px;height:1080px;font-family:Arial,sans-serif}
+  .bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(225,78,18,0.12),transparent 60%),var(--ink)}
+  #kicker{position:absolute;top:100px;left:0;right:0;text-align:center;font-family:"IBM Plex Mono",monospace;font-size:15px;font-weight:500;color:var(--orange);text-transform:uppercase;letter-spacing:0.14em}
+  .stat{position:absolute;left:0;right:0;text-align:center}
+  .stat .num{display:block;font-size:96px;font-weight:900;color:var(--cream);letter-spacing:-0.04em;line-height:1}
+  .stat .num.or{color:var(--orange)}
+  .stat .lbl{display:block;font-size:20px;font-weight:400;color:var(--muted);margin-top:6px;letter-spacing:-0.01em}
+  #s1{top:210px} #s2{top:340px} #s3{top:480px} #s4{top:620px}
+  .hero .num{font-size:120px}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<script>
+  window.__timelines=window.__timelines||{};
+  const tl=gsap.timeline({paused:true});
+  tl.fromTo("#kicker",{opacity:0},{opacity:1,duration:0.5,ease:"power3.out"},0);
+  tl.fromTo("#s1",{opacity:0,y:30},{opacity:1,y:0,duration:0.7,ease:"power3.out"},0.8);
+  tl.fromTo("#s2",{opacity:0,y:30},{opacity:1,y:0,duration:0.7,ease:"power3.out"},2.0);
+  tl.fromTo("#s3",{opacity:0,y:30},{opacity:1,y:0,duration:0.7,ease:"power3.out"},3.2);
+  tl.fromTo("#s4",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.9,ease:"power3.out"},5.0);
+  // Glow on hero
+  tl.fromTo("#s4 .num",{textShadow:"0 0 0px rgba(225,78,18,0)"},{textShadow:"0 0 80px rgba(225,78,18,0.5)",duration:1,ease:"power3.in"},5.5);
+  window.__timelines["06-metrics"]=tl;
+</script>
+</template>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=1920,height=1080"></head>
+<body>
+<template>
+<div id="root" data-composition-id="05-review" data-start="0" data-duration="8.6" data-width="1920" data-height="1080">
+  <div class="clip bg" data-start="0" data-duration="8" data-track-index="0"></div>
+  <div id="window" class="clip" data-start="0.3" data-duration="7.7" data-track-index="1">
+    <img src="assets/shot_detail_amber.png" alt="Detail view" style="width:100%;height:100%;object-fit:contain">
+  </div>
+  <div id="hl1" class="clip hl" data-start="2.0" data-duration="6" data-track-index="2" style="top:210px;left:100px;width:1720px;height:55px"></div>
+  <div id="label1" class="clip label" data-start="2.0" data-duration="6" data-track-index="3" style="top:210px">Key terms already extracted.</div>
+  <div id="hl2" class="clip hl" data-start="3.8" data-duration="4.2" data-track-index="4" style="top:430px;left:100px;width:1720px;height:180px"></div>
+  <div id="label2" class="clip label" data-start="3.8" data-duration="4.2" data-track-index="5" style="top:490px">Every issue shows the evidence and the redline.</div>
+  <div id="btn" class="clip" data-start="6.5" data-duration="1.5" data-track-index="6">ACCEPT</div>
+  <div id="tag" class="clip" data-start="6.8" data-duration="1.2" data-track-index="7">The lawyer confirms. They do not start from scratch.</div>
+</div>
+</template>
+<style>
+  :root{--ink:#15171C;--orange:#E14E12;--cream:#FFFFFF;--muted:#FF6633}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1920px;height:1080px;overflow:hidden;background:var(--ink)}
+  #root{position:relative;width:1920px;height:1080px;font-family:Arial,sans-serif}
+  .bg{position:absolute;inset:0;background:var(--ink)}
+  #window{position:absolute;top:40px;left:90px;width:1740px;height:880px;border:1px solid #282726;border-radius:8px;overflow:hidden;background:#1A1A1A}
+  .hl{position:absolute;border:2px solid var(--orange);border-radius:6px;background:rgba(225,78,18,0.08)}
+  .label{position:absolute;right:40px;font-size:20px;font-weight:700;color:var(--cream);letter-spacing:-0.01em;text-align:right;width:340px}
+  #hl1{top:200px;left:100px;width:1720px;height:50px}
+  #label1{top:195px}
+  #hl2{top:380px;left:100px;width:1720px;height:150px}
+  #label2{top:425px}
+  #btn{position:absolute;bottom:80px;left:0;right:0;text-align:center}
+  #btn::after{content:"ACCEPT";display:inline-block;padding:14px 48px;background:var(--orange);color:var(--cream);font-family:"IBM Plex Mono",monospace;font-size:18px;font-weight:700;letter-spacing:0.14em;border-radius:8px}
+  #tag{position:absolute;bottom:40px;left:0;right:0;text-align:center;font-size:26px;font-weight:700;color:var(--cream);letter-spacing:-0.01em}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<script>
+  window.__timelines=window.__timelines||{};
+  const tl=gsap.timeline({paused:true});
+  tl.fromTo("#window",{opacity:0,x:60},{opacity:1,x:0,duration:0.8,ease:"power3.out"},0.3);
+  tl.fromTo("#hl1",{opacity:0},{opacity:1,duration:0.3},2.0);
+  tl.fromTo("#label1",{opacity:0,x:20},{opacity:1,x:0,duration:0.5,ease:"power3.out"},2.0);
+  tl.fromTo("#hl2",{opacity:0},{opacity:1,duration:0.3},3.8);
+  tl.fromTo("#label2",{opacity:0,x:20},{opacity:1,x:0,duration:0.5,ease:"power3.out"},3.8);
+  tl.fromTo("#btn",{opacity:0,scale:0.8},{opacity:1,scale:1,duration:0.5,ease:"power3.out"},6.5);
+  tl.fromTo("#btn",{scale:1},{scale:0.95,duration:0.1,ease:"power2.in"},6.9)
+    .to("#btn",{scale:1,duration:0.3,ease:"power3.out"},7.0);
+  tl.fromTo("#tag",{opacity:0,y:8},{opacity:1,y:0,duration:0.5,ease:"power3.out"},6.8);
+  window.__timelines["05-review"]=tl;
+</script>
+</template>
+</body>
+</html>
