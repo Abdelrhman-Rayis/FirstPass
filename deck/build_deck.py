@@ -74,7 +74,7 @@ def slide(bg=WHITE, footer=True):
 
 
 def text(s, txt, l, t, w, h, size, color=INK, bold=False, italic=False,
-         align=PP_ALIGN.LEFT, spacing=1.04, anchor=MSO_ANCHOR.TOP, font=FONT):
+         align=PP_ALIGN.LEFT, spacing=1.04, anchor=MSO_ANCHOR.TOP, font=FONT, url=None):
     tb = s.shapes.add_textbox(Inches(l), Inches(t), Inches(w), Inches(h))
     tf = tb.text_frame; tf.word_wrap = True; tf.vertical_anchor = anchor
     tf.margin_left = 0; tf.margin_right = 0; tf.margin_top = 0; tf.margin_bottom = 0
@@ -82,6 +82,8 @@ def text(s, txt, l, t, w, h, size, color=INK, bold=False, italic=False,
     r = p.add_run(); r.text = txt
     r.font.size = Pt(size); r.font.bold = bold; r.font.italic = italic
     r.font.name = font; r.font.color.rgb = color
+    if url:
+        r.hyperlink.address = url
     return tb
 
 
@@ -180,6 +182,8 @@ text(s, "A working prototype, a live console, and measured results,", M, 4.12, 1
 text(s, "built to run entirely on your own servers.", M, 4.42, 11, 0.4, 15.5, DIM)
 text(s, "Abdelrhman Rayis", M, 5.7, 8, 0.4, 16, INK, bold=True)
 text(s, "AI Pioneer  ·  work-sample presentation", M, 6.08, 8, 0.4, 12.5, DIM)
+text(s, "github.com/Abdelrhman-Rayis/FirstPass", M, 6.5, 8, 0.4, 12.5, ACC2, bold=True,
+     url="https://github.com/Abdelrhman-Rayis/FirstPass")
 # right column
 text(s, "RISK TRIAGE", SW - 3.55, 2.0, 2.8, 0.4, 11.5, FAINT, bold=True, align=PP_ALIGN.RIGHT)
 pill(s, "RED    escalate", SW - 3.55, 2.42, 2.8, 0.5, RED_T, RED, size=12.5)
