@@ -2,6 +2,12 @@
 
 **Every contract gets an AI first pass. A human confirms. The queue gets shorter every month.**
 
+[![Prototype](https://img.shields.io/badge/prototype-running-brightgreen)](#quickstart)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![Local AI](https://img.shields.io/badge/AI-on--prem%20%7C%20local%20model-12A150)](#private-by-design)
+
+> **Quick links:** [Summary PDF](FirstPass_Summary.pdf) &middot; [Deck (PDF)](deck/FirstPass_PortSwigger.pdf) &middot; [Deck (PPTX)](deck/FirstPass_PortSwigger.pptx)
+
 An agentic first-pass reviewer for the standard commercial contracts an in-house
 legal team sees all day: mutual NDAs and customer order forms. It reads each
 contract, checks it against the team's own standard positions, and routes it:
@@ -61,6 +67,20 @@ python webapp/app.py                                 # the web console -> http:/
 No API key needed, and nothing leaves the machine: the whole thing runs offline
 on a deterministic engine. The optional reasoning layer is an on-prem local model
 (see "Private by design" below), not a cloud API.
+
+## Demo
+
+![Dashboard](assets/shot_dashboard.png)
+
+*The web console a lawyer opens each morning. Contracts sorted by risk, the safe
+80% already cleared, redlines pre-drafted for the rest.*
+
+![Detail view](assets/shot_detail_amber.png)
+
+*Inside a review: key terms extracted, evidence shown, and the exact redline the
+team has used before is already drafted. The lawyer confirms — they do not read cold.*
+
+A rendered demo video is available in `videos/firstpass-promos/` (HyperFrames project).
 
 ---
 
