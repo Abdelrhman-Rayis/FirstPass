@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="tiles">
+  <div class="tile">
+    <div class="big" style="color:var(--red)">{{ counts['RED'] }}</div>
+    <div class="lbl">escalate to a human<br>(novel or high-risk)</div></div>
+  <div class="tile">
+    <div class="big" style="color:var(--amber)">{{ counts['AMBER'] }}</div>
+    <div class="lbl">confirm pre-drafted<br>redlines</div></div>
+  <div class="tile">
+    <div class="big" style="color:var(--green)">{{ counts['GREEN'] }}</div>
+    <div class="lbl">auto-cleared with<br>a spot-check</div></div>
+  <div class="tile">
+    <div class="big" style="color:var(--acc2)">{{ hours_saved }}h</div>
+    <div class="lbl">human review time saved<br>on this queue ({{ saved_pct }}%)</div></div>
+</div>
+
+<div class="muted" style="margin:0 4px 12px;font-size:14px">
+  <b style="color:var(--ink)">{{ handled }}/{{ n }}</b> contracts handled without a cold human read
+  &nbsp;&middot;&nbsp; queue sorted by risk
+</div>
+
+<div class="card">
+  <div class="row head">
+    <div>Status</div><div>Contract</div><div>Type</div><div>Issues</div><div>Time saved</div><div></div>
+  </div>
+  {% for r in results %}
+  {% set vd = verdict[r.verdict] %}
+  <a class="row" href="/contract/{{ r.contract_id }}">
+    <div><span class="chip {{ vd.cls }}"><span class="d"></span>{{ vd.label }}</span></div>
+    <div class="cid">{{ r.contract_id }}</div>
+    <div class="ctype">{{ r.type_label }}</div>
+    <div class="muted">{{ r.findings|length }}</div>
+    <div class="saved">{{ r.minutes_saved }} min</div>
+    <div class="review">Review &rsaquo;</div>
+  </a>
+  {% endfor %}
+</div>
+
+{% endblock %}

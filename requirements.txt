@@ -1,0 +1,15 @@
+# Core: the engine and the web console run on these, fully offline.
+pyyaml>=6.0
+flask>=3.0
+
+# Optional reasoning layer: an ON-PREM local model (firstpass/llm.py).
+# No extra Python package needed. Just run a local OpenAI-compatible server
+# (Ollama or vLLM) and set:
+#   export FIRSTPASS_LLM=1
+#   export FIRSTPASS_LLM_URL=http://localhost:11434/v1   # default (Ollama)
+#   export FIRSTPASS_LLM_MODEL=qwen2.5:32b-instruct      # or llama3.3, mistral, gpt-oss
+# Nothing leaves the host.
+
+# Optional: only needed to regenerate the pitch deck (deck/build_deck.py).
+# python-pptx>=1.0
+# pillow>=10.0

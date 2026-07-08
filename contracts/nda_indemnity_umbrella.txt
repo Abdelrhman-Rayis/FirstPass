@@ -1,0 +1,29 @@
+MUTUAL NON-DISCLOSURE AGREEMENT
+
+This Agreement is made between Umbrella Corp and PortSwigger Ltd, each a "party".
+
+1. Confidential Information
+"Confidential Information" means non-public information disclosed by one party to
+the other that is marked confidential or reasonably understood to be confidential.
+
+2. Obligations
+Each party shall keep the other party's Confidential Information confidential and
+use it solely for the agreed purpose.
+
+3. Exclusions
+Confidential Information does not include information that is publicly available,
+already known, or independently developed.
+
+4. Indemnity
+The Receiving Party shall indemnify and hold harmless the Disclosing Party
+against any and all losses, damages, costs and expenses arising out of any
+breach of this Agreement. This liability shall not be limited or capped in any
+way.
+
+5. Term
+The obligations shall survive for three (3) years from disclosure.
+
+6. Governing Law
+This Agreement is governed by the laws of England and Wales.
+
+Signed by authorised representatives of the parties.

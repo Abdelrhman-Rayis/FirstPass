@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Claude Code
+.claude/
+
+# PowerPoint temp
+~$*.pptx
+
+# Output (regenerated)
+evals/results.md
+
+# Videos output
+videos/firstpass-promos/node_modules/

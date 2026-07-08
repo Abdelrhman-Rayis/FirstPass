@@ -1,0 +1,30 @@
+MUTUAL NON-DISCLOSURE AGREEMENT
+
+This Agreement is entered into between Wayne Enterprises and PortSwigger Ltd,
+each a "party".
+
+1. Confidential Information
+"Confidential Information" means non-public information disclosed by one party to
+the other that is marked confidential or reasonably understood to be confidential.
+
+2. Obligations
+Each party shall keep the other party's Confidential Information confidential and
+use it solely for the agreed purpose.
+
+3. Exclusions
+Confidential Information does not include information that is publicly available,
+was already known, or is independently developed.
+
+4. Term
+The obligations shall survive for three (3) years from the date of disclosure.
+
+5. Publicity and Press
+Notwithstanding anything to the contrary, each party consents to being named by
+the other in press releases, and the parties shall issue a joint public
+announcement of this relationship within thirty (30) days, the wording of which
+shall be subject to the prior approval of Wayne Enterprises' communications team.
+
+6. Governing Law
+This Agreement is governed by the laws of England and Wales.
+
+Signed by authorised representatives.

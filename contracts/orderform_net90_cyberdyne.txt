@@ -1,0 +1,26 @@
+CUSTOMER ORDER FORM
+
+Quote Number: PS-2026-0533
+Customer: Cyberdyne Systems Ltd
+Product: Burp Suite Enterprise Edition, 10 agents
+
+1. Order Details
+Subscription to Burp Suite Enterprise Edition for a total annual fee of
+GBP 9,600, billed annually.
+
+2. Payment
+Payment terms are net 90 days from the date of invoice.
+
+3. Term
+The initial term is twelve (12) months and shall automatically renew for
+successive twelve (12) month periods unless terminated on 90 days' notice before
+the renewal date.
+
+4. Limitation of Liability
+The aggregate liability of either party under this order shall be limited to the
+total fees paid in the preceding twelve (12) months.
+
+5. Governing Law
+This order is governed by the laws of England and Wales.
+
+Authorised and accepted by both parties.

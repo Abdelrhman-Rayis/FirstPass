@@ -1,0 +1,26 @@
+CUSTOMER ORDER FORM
+
+Quote Number: PS-2026-0481
+Customer: Stark Industries Ltd
+Product: Burp Suite Enterprise Edition, 25 agents
+
+1. Order Details
+Subscription to Burp Suite Enterprise Edition for a total annual fee of
+GBP 18,000, billed annually in advance.
+
+2. Payment
+Payment terms are net 30 days from the date of invoice.
+
+3. Term
+The initial term is twelve (12) months. Renewal shall be by mutual agreement of
+the parties at least thirty (30) days before the end of the then-current term.
+
+4. Limitation of Liability
+The aggregate liability of either party under this order shall be limited to the
+total fees paid by the customer in the twelve (12) months preceding the claim.
+
+5. Governing Law
+This order is governed by the laws of England and Wales and incorporates the
+PortSwigger master subscription terms.
+
+Authorised and accepted by both parties.

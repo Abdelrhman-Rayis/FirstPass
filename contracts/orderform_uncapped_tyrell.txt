@@ -1,0 +1,25 @@
+CUSTOMER ORDER FORM
+
+Quote Number: PS-2026-0559
+Customer: Tyrell Corporation
+Product: Burp Suite Enterprise Edition, 200 agents
+
+1. Order Details
+Subscription to Burp Suite Enterprise Edition for a total annual fee of
+GBP 240,000, billed annually in advance.
+
+2. Payment
+Payment terms are net 45 days from the date of invoice.
+
+3. Term
+The initial term is thirty-six (36) months.
+
+4. Liability
+Notwithstanding any other provision, the liability of the supplier shall not be
+limited and shall not be capped in respect of any claim arising under or in
+connection with this order.
+
+5. Governing Law
+This order is governed by the laws of the State of New York.
+
+Authorised and accepted by both parties.

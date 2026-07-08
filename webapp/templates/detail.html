@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+
+<a class="back" href="/">&lsaquo; back to queue</a>
+
+<div class="banner {{ v.cls }}">
+  <div>
+    <div class="v">{{ v.label }}</div>
+  </div>
+  <div>
+    <div class="route">{{ v.route }}</div>
+    <div class="sub">{{ v.sub }}</div>
+  </div>
+  <div class="meta">
+    <div style="font-weight:600;color:var(--white);font-size:15px">{{ r.contract_id }}</div>
+    <div>{{ r.type_label }}</div>
+    <div>confidence {{ (r.confidence*100)|round|int }}% &middot; engine: {{ r.engine }}</div>
+    <div>~{{ r.manual_minutes }} min manual &rarr; ~{{ r.firstpass_minutes }} min &nbsp;<b style="color:var(--green)">({{ r.minutes_saved }} saved)</b></div>
+  </div>
+</div>
+
+{% if r.key_terms %}
+<div class="terms">
+  {% for k,val in r.key_terms.items() %}
+  <div class="term"><b>{{ k|replace('_',' ') }}</b>{{ val }}</div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<h3 class="sec">{{ r.findings|length }} finding{{ '' if r.findings|length==1 else 's' }}</h3>
+
+{% if not r.findings %}
+<div class="none">&#10003; No deviations from standard positions. Safe to auto-clear after a spot-check.</div>
+{% endif %}
+
+{% for f in r.findings %}
+<div class="finding {{ f.severity }}">
+  <div class="tags">
+    <span class="tag {{ 'novel' if not f.known else f.severity }}">{{ kinds[f.kind] }}</span>
+    <span class="tag {{ f.severity }}">{{ f.severity }}</span>
+    <span class="tag">{{ 'known pattern' if f.known else 'novel / unseen' }}</span>
+  </div>
+  <div class="flabel">{{ f.label }}</div>
+  {% if f.evidence %}<div class="evidence">&ldquo;{{ f.evidence }}&rdquo;</div>{% endif %}
+  {% if f.rationale %}<div class="why">{{ f.rationale }}</div>{% endif %}
+  {% if f.redline %}
+  <div class="redline">
+    <div class="rl">SUGGESTED REDLINE &middot; previously used</div>
+    <div class="rt">{{ f.redline }}</div>
+    <div class="btns">
+      <button class="btn accept">Accept</button>
+      <button class="btn">Edit</button>
+      <button class="btn">Reject</button>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endfor %}
+
+{% if r.verdict == 'RED' %}
+<div class="btns" style="margin-top:16px">
+  <button class="btn esc">Escalate to a human reviewer</button>
+  <button class="btn">Add resolution to playbook</button>
+</div>
+{% endif %}
+
+{% endblock %}

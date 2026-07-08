@@ -1,0 +1,243 @@
+# =============================================================================
+# FirstPass Playbook
+# -----------------------------------------------------------------------------
+# This file IS the product's knowledge. It holds the legal team's standard
+# positions, the deviations they have seen before, and the exact redline
+# language they have used to fix each one.
+#
+# Editing this file is how Legal "teaches" FirstPass. No code changes, no
+# retraining, no engineer. A lawyer resolves a novel clause once, adds it here,
+# and every future contract with that clause is handled automatically.
+# That is the compounding loop.
+# =============================================================================
+
+meta:
+  org: "PortSwigger (illustrative)"
+  version: "0.3"
+  maintained_by: "In-house Legal"
+  last_updated: "2026-07-07"
+
+# -----------------------------------------------------------------------------
+# HARD ESCALATION TRIGGERS
+# If any of these appear in any contract, it is RED and always sees a human,
+# no matter how standard the rest looks. These encode risk appetite, not style.
+# -----------------------------------------------------------------------------
+red_flags:
+  - id: uncapped_liability
+    label: "Uncapped or unlimited liability"
+    patterns: ["unlimited liability", "liability shall not be limited", "without limit", "no cap on liability", "not be capped"]
+    rationale: "Uncapped liability is outside PortSwigger's risk appetite and always needs Legal."
+
+  - id: indemnity
+    label: "Indemnification / hold-harmless obligation"
+    patterns: ["indemnif", "hold harmless", "hold the disclosing party harmless"]
+    rationale: "Indemnities transfer open-ended risk. Legal must scope any indemnity before signature."
+
+  - id: non_compete
+    label: "Non-compete, exclusivity or non-solicitation"
+    patterns: ["non-compete", "shall not compete", "will not solicit", "non-solicitation", "exclusivity", "exclusive arrangement"]
+    rationale: "A standard NDA or order form should not restrain trade or hiring. Escalate."
+
+  - id: ip_assignment
+    label: "Assignment or transfer of intellectual property"
+    patterns: ["hereby assigns all", "assigns all right, title", "ownership of all intellectual property shall transfer", "transfers ownership of intellectual property"]
+    rationale: "IP assignment is never boilerplate. Human review required."
+
+# -----------------------------------------------------------------------------
+# CONTRACT TYPES
+# Each type lists the clauses we expect. For each clause we record the standard
+# position, whether its absence is itself a risk, and the deviations we have
+# seen before with the redline previously used to resolve them.
+# -----------------------------------------------------------------------------
+contract_types:
+
+  mutual_nda:
+    label: "Mutual Non-Disclosure Agreement"
+    detect: ["non-disclosure", "confidential information", "mutual nda", "confidentiality agreement"]
+    typical_manual_minutes: 35
+    clauses:
+
+      - id: mutuality
+        title: "Mutuality of obligations"
+        detect: ["each party", "both parties", "mutual", "either party"]
+        missing_severity: medium
+        missing_note: "Agreement may be one-way; confirm PortSwigger is protected as discloser."
+        deviations:
+          - id: one_way
+            label: "One-way / unilateral confidentiality"
+            signal: ["the receiving party shall", "recipient shall keep", "recipient agrees to", "unilateral"]
+            severity: medium
+            known: true
+            redline: >
+              Convert to mutual. Replace the "Disclosing Party / Receiving Party"
+              construction with reciprocal "each party" language so both sides owe
+              the same confidentiality obligations as discloser and recipient.
+            rationale: "PortSwigger discloses as often as it receives; a one-way NDA leaves our disclosures unprotected."
+
+      - id: definition
+        title: "Definition of Confidential Information"
+        detect: ["confidential information means", "confidential information includes", "definition of confidential"]
+        missing_severity: high
+        missing_note: "No definition of Confidential Information found; scope is undefined."
+        deviations:
+          - id: overbroad_definition
+            label: "Overly broad definition (all information deemed confidential)"
+            signal: ["all information disclosed", "any and all information", "whether or not marked", "regardless of form or marking"]
+            severity: medium
+            known: true
+            redline: >
+              Narrow the definition to information that is either marked confidential
+              or would reasonably be understood as confidential given its nature and
+              the circumstances of disclosure. Remove "any and all information".
+            rationale: "An unbounded definition makes routine, already-public information a breach risk for us."
+
+      - id: exclusions
+        title: "Standard exclusions"
+        detect: ["publicly available", "public domain", "independently developed", "rightfully received", "already known"]
+        missing_severity: high
+        missing_note: "Standard carve-outs (public domain, independently developed, already known) are missing."
+        deviations: []
+
+      - id: term
+        title: "Duration of confidentiality obligations"
+        detect: ["shall survive", "period of", "years from", "term of this agreement", "expire"]
+        missing_severity: low
+        missing_note: "No clear duration for the confidentiality obligation."
+        deviations:
+          - id: perpetual_term
+            label: "Perpetual / indefinite confidentiality term"
+            signal: ["in perpetuity", "perpetual", "indefinitely", "shall not expire", "no expiry"]
+            severity: medium
+            known: true
+            redline: >
+              Replace the perpetual obligation with a fixed term of three (3) years
+              from the date of disclosure, save for trade secrets which remain
+              protected for as long as they qualify as such under applicable law.
+            rationale: "Perpetual obligations are an unmanageable long-tail liability. Three years is our standard."
+
+      - id: governing_law
+        title: "Governing law and jurisdiction"
+        detect: ["governed by the laws", "governing law", "jurisdiction of", "courts of"]
+        missing_severity: medium
+        missing_note: "No governing law specified."
+        deviations:
+          - id: foreign_law
+            label: "Non-England & Wales governing law"
+            signal: ["state of california", "state of delaware", "state of new york", "laws of the state", "courts of new york", "republic of"]
+            severity: medium
+            known: true
+            redline: >
+              Amend governing law and exclusive jurisdiction to the laws of England
+              and Wales. Where the counterparty insists on their home jurisdiction,
+              fall back to a neutral forum and escalate to Legal.
+            rationale: "Defending under an unfamiliar foreign law raises cost and uncertainty for a low-value NDA."
+
+      - id: return_destroy
+        title: "Return or destruction of information"
+        detect: ["return or destroy", "return all", "destroy all", "upon request return"]
+        missing_severity: low
+        missing_note: "No return / destruction obligation on termination."
+        deviations: []
+
+  order_form:
+    label: "Customer Order Form"
+    detect: ["order form", "order schedule", "subscription order", "quote number", "purchase order"]
+    typical_manual_minutes: 25
+    clauses:
+
+      - id: payment_terms
+        title: "Payment terms"
+        detect: ["net 30", "within 30 days", "payment terms", "days of invoice", "net thirty"]
+        missing_severity: low
+        missing_note: "No payment terms stated on the order form."
+        deviations:
+          - id: extended_payment
+            label: "Extended payment terms (net 60 / net 90)"
+            signal: ["net 60", "net 90", "within 60 days", "within 90 days", "net sixty", "net ninety"]
+            severity: low
+            known: true
+            redline: >
+              Restore standard payment terms of net 30 days from date of invoice.
+              Where the customer requires longer, cap at net 45 and flag to Finance
+              for cash-flow sign-off.
+            rationale: "Extended terms move revenue recognition and strain cash flow; net 30 is our default."
+
+      - id: renewal
+        title: "Term and renewal"
+        detect: ["initial term", "renewal term", "auto-renew", "automatically renew", "twelve months", "12 months"]
+        missing_severity: low
+        missing_note: "No term or renewal mechanism stated."
+        deviations:
+          - id: long_autorenew
+            label: "Auto-renewal with long opt-out notice"
+            signal: ["automatically renew", "auto-renew", "90 days' notice", "ninety days notice", "unless terminated"]
+            severity: low
+            known: true
+            redline: >
+              Keep the 12-month initial term but require renewal to be by mutual
+              agreement, or if auto-renewing, reduce the opt-out notice period to 30
+              days before the renewal date.
+            rationale: "Long opt-out windows trap the customer and generate disputes; short notice keeps goodwill."
+
+      - id: liability_cap
+        title: "Limitation of liability"
+        detect: ["limitation of liability", "liability shall be limited", "aggregate liability", "total liability", "cap on liability"]
+        missing_severity: high
+        missing_note: "No limitation of liability clause; exposure is unbounded."
+        deviations: []
+
+      - id: governing_law_of
+        title: "Governing law"
+        detect: ["governed by the laws", "governing law", "jurisdiction"]
+        missing_severity: medium
+        missing_note: "No governing law specified on the order form."
+        deviations:
+          - id: foreign_law_of
+            label: "Non-England & Wales governing law"
+            signal: ["state of california", "state of delaware", "state of new york", "laws of the state"]
+            severity: medium
+            known: true
+            redline: >
+              Amend governing law to England and Wales, consistent with the master
+              terms. Escalate if the customer's procurement mandates their state law.
+            rationale: "Order forms should inherit the governing law of the master agreement, not introduce a new one."
+
+# -----------------------------------------------------------------------------
+# KNOWN CLAUSE HEADINGS
+# Section headings FirstPass recognises as ordinary contract furniture. A
+# heading that is NOT here and NOT a known clause above is treated as a novel
+# material clause and escalated (RED), because "we have not seen this before"
+# is precisely the signal a human should look at.
+# -----------------------------------------------------------------------------
+recognised_headings:
+  - definitions
+  - confidential information
+  - confidentiality
+  - obligations
+  - permitted use
+  - purpose
+  - exclusions
+  - term
+  - termination
+  - return of materials
+  - no license
+  - no warranty
+  - remedies
+  - injunctive relief
+  - governing law
+  - jurisdiction
+  - notices
+  - entire agreement
+  - severability
+  - counterparts
+  - assignment
+  - miscellaneous
+  - general
+  - payment
+  - fees
+  - charges
+  - subscription
+  - order details
+  - limitation of liability
+  - data protection
+  - signatures

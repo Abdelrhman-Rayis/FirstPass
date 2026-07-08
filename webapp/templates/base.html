@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FirstPass</title>
+<style>
+  :root{
+    --bg:#FFFFFF; --soft:#F5F6F8; --card:#FFFFFF; --line:#E4E7EC; --ink:#15171C;
+    --dim:#5A6472; --faint:#8A93A0; --acc:#FF6633; --acc2:#E14E12;
+    --green:#12A150; --amber:#C07C00; --red:#DE3226;
+    --green-t:#E7F6EE; --amber-t:#FBF2DC; --red-t:#FBE9E7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1180px;margin:0 auto;padding:26px 34px 60px}
+  header.brand{display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo .dot{width:13px;height:13px;border-radius:50%;background:var(--acc)}
+  .logo h1{font-size:25px;margin:0;letter-spacing:-.4px}
+  .logo .tag{color:var(--dim);font-size:13px;margin-top:2px}
+  .localbadge{display:flex;align-items:center;gap:8px;background:var(--green-t);
+    border:1px solid #BFE6CE;border-radius:999px;padding:8px 14px;font-size:12px;color:#0C7A3D}
+  .localbadge b{color:#0C7A3D}
+  a{color:inherit;text-decoration:none}
+  .muted{color:var(--dim)} .faint{color:var(--faint)}
+  /* summary tiles */
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:0 0 26px}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px;box-shadow:0 1px 2px rgba(20,23,28,.04)}
+  .tile .big{font-size:32px;font-weight:800;margin:0 0 4px;letter-spacing:-.5px}
+  .tile .lbl{font-size:12.5px;color:var(--dim);line-height:1.4}
+  /* queue table */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    box-shadow:0 1px 3px rgba(20,23,28,.05);overflow:hidden}
+  .row{display:grid;grid-template-columns:120px 1fr 210px 80px 120px 96px;align-items:center;
+    gap:14px;padding:15px 22px;border-bottom:1px solid var(--line)}
+  .row:last-child{border-bottom:none}
+  .row:hover{background:var(--soft)}
+  .row.head{color:var(--faint);font-size:11px;text-transform:uppercase;letter-spacing:.6px;
+    padding:13px 22px;background:var(--soft)}
+  .chip{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:12.5px;
+    padding:6px 13px;border-radius:999px}
+  .chip .d{width:8px;height:8px;border-radius:50%}
+  .chip.green{background:var(--green-t);color:var(--green)} .chip.green .d{background:var(--green)}
+  .chip.amber{background:var(--amber-t);color:var(--amber)} .chip.amber .d{background:var(--amber)}
+  .chip.red{background:var(--red-t);color:var(--red)} .chip.red .d{background:var(--red)}
+  .cid{font-weight:600} .ctype{color:var(--dim);font-size:13px}
+  .review{color:var(--acc2);font-weight:700;font-size:13.5px;text-align:right}
+  .saved{color:var(--green);font-weight:700;font-size:13.5px}
+  /* detail */
+  .back{color:var(--dim);font-size:13px;display:inline-block;margin:2px 0 16px}
+  .banner{border-radius:16px;padding:20px 24px;display:flex;align-items:center;gap:22px;
+    margin-bottom:20px;border:1px solid var(--line)}
+  .banner.green{background:var(--green-t);border-color:#BFE6CE}
+  .banner.amber{background:var(--amber-t);border-color:#EAD9A6}
+  .banner.red{background:var(--red-t);border-color:#F2C6C1}
+  .banner .v{font-size:26px;font-weight:800;letter-spacing:.4px}
+  .banner.green .v{color:var(--green)} .banner.amber .v{color:var(--amber)} .banner.red .v{color:var(--red)}
+  .banner .route{font-size:16px;font-weight:700} .banner .sub{color:var(--dim);font-size:13px}
+  .banner .meta{margin-left:auto;text-align:right;color:var(--dim);font-size:13px}
+  .banner .meta b{color:var(--green)}
+  .terms{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 22px}
+  .term{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:8px 13px;font-size:13px}
+  .term b{color:var(--faint);font-weight:600;margin-right:6px;text-transform:capitalize}
+  h3.sec{font-size:12px;text-transform:uppercase;letter-spacing:.7px;color:var(--faint);margin:22px 0 12px}
+  .finding{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:16px 18px;margin-bottom:12px;box-shadow:0 1px 2px rgba(20,23,28,.04)}
+  .tags{display:flex;gap:8px;align-items:center;margin-bottom:9px;flex-wrap:wrap}
+  .tag{font-size:11px;font-weight:700;letter-spacing:.3px;padding:4px 9px;border-radius:6px;
+    background:var(--soft);color:var(--dim)}
+  .tag.high{background:var(--red-t);color:var(--red)}
+  .tag.medium{background:var(--amber-t);color:var(--amber)}
+  .tag.low{background:#E8F1FB;color:#1F6FBF}
+  .tag.novel{background:#FCEBE3;color:var(--acc2)}
+  .finding .flabel{font-weight:700;font-size:15.5px}
+  .finding .why{color:var(--dim);font-size:13.5px;margin:8px 0 0;line-height:1.5}
+  .evidence{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12.5px;color:#3A4250;
+    background:var(--soft);border-radius:8px;padding:9px 12px;margin:9px 0;border:1px solid var(--line)}
+  .redline{background:var(--green-t);border:1px solid #BFE6CE;border-radius:10px;padding:12px 14px;margin-top:11px}
+  .redline .rl{font-size:11px;font-weight:800;color:var(--green);letter-spacing:.4px;margin-bottom:6px}
+  .redline .rt{font-size:13.5px;line-height:1.5}
+  .btns{display:flex;gap:9px;margin-top:12px}
+  .btn{font-size:12.5px;font-weight:700;padding:8px 15px;border-radius:8px;border:1px solid var(--line);
+    background:var(--card);color:var(--ink);cursor:pointer}
+  .btn.accept{background:var(--green);color:#fff;border-color:transparent}
+  .btn.esc{background:var(--red);color:#fff;border-color:transparent}
+  .none{color:var(--green);background:var(--green-t);border:1px solid #BFE6CE;border-radius:14px;padding:16px 18px;font-size:14px}
+  .foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);
+    color:var(--faint);font-size:12px;display:flex;justify-content:space-between}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="brand">
+    <div class="logo">
+      <span class="dot"></span>
+      <div><h1>FirstPass</h1><div class="tag">Every contract gets an AI first pass. A human confirms.</div></div>
+    </div>
+    <div class="localbadge"><span>&#128274;</span> Running <b>on-prem</b> &middot; local model &middot; no cloud</div>
+  </header>
+  {% block content %}{% endblock %}
+  <div class="foot"><span>FirstPass &middot; local contract triage console</span><span>PortSwigger &middot; AI Pioneer &middot; Abdelrhman Rayis</span></div>
+</div>
+</body>
+</html>

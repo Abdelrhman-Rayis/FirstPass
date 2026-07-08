@@ -1,0 +1,60 @@
+# Ground truth for the eval set: what a senior lawyer would say.
+#
+# verdict       : the correct routing (GREEN auto-clear / AMBER confirm / RED escalate)
+# manual_minutes: a plausible human review time for this contract, used for the
+#                 time-saved model (kept modest and defensible, not flattering)
+# issues        : the MATERIAL issues that should be caught (by finding id).
+#                 Low-severity housekeeping notes are out of scope for scoring.
+#
+# 'material' for scoring = red flags, deviations, novel clauses, and high-severity
+# missing clauses. Low-severity 'missing return clause' style notes are excluded.
+
+nda_clean_acme:
+  verdict: GREEN
+  manual_minutes: 35
+  issues: []
+
+nda_oneway_globex:
+  verdict: AMBER
+  manual_minutes: 35
+  issues: [one_way]
+
+nda_perpetual_initech:
+  verdict: AMBER
+  manual_minutes: 40
+  issues: [perpetual_term, foreign_law]
+
+nda_indemnity_umbrella:
+  verdict: RED
+  manual_minutes: 45
+  issues: [uncapped_liability, indemnity]
+
+nda_noncompete_soylent:
+  verdict: RED
+  manual_minutes: 40
+  issues: [non_compete]
+
+nda_broaddef_hooli:
+  verdict: RED
+  manual_minutes: 40
+  issues: [overbroad_definition, exclusions_missing]
+
+nda_novel_wayne:
+  verdict: RED
+  manual_minutes: 45
+  issues: [novel_material_clause]
+
+orderform_clean_stark:
+  verdict: GREEN
+  manual_minutes: 25
+  issues: []
+
+orderform_net90_cyberdyne:
+  verdict: AMBER
+  manual_minutes: 25
+  issues: [extended_payment, long_autorenew]
+
+orderform_uncapped_tyrell:
+  verdict: RED
+  manual_minutes: 45
+  issues: [uncapped_liability, foreign_law_of, liability_cap_missing]

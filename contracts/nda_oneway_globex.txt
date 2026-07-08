@@ -1,0 +1,27 @@
+NON-DISCLOSURE AGREEMENT
+
+This Non-Disclosure Agreement is made between Globex Corporation ("Discloser")
+and PortSwigger Ltd ("Recipient").
+
+1. Confidential Information
+"Confidential Information" means non-public information disclosed by the
+Discloser that is marked confidential or would reasonably be understood to be
+confidential.
+
+2. Obligations
+The Receiving Party shall keep the Confidential Information confidential and use
+it only to evaluate the potential relationship. The Recipient shall not disclose
+the Confidential Information to any third party without prior written consent.
+
+3. Exclusions
+Confidential Information does not include information that is publicly available,
+was already known to the Recipient, or is independently developed.
+
+4. Term
+The confidentiality obligations shall survive for a period of two (2) years from
+the date of disclosure.
+
+5. Governing Law
+This Agreement is governed by the laws of England and Wales.
+
+Signed for and on behalf of the parties.
