@@ -15,9 +15,7 @@ contract, checks it against a playbook of standard positions, and routes it:
 - 🟡 **AMBER** — known deviations. Redline already drafted; lawyer confirms.
 - 🔴 **RED** — novel or high-risk. Escalate for full human review.
 
-Built for the PortSwigger *AI Pioneer* task by Abdelrhman Rayis.
-
----
+ open source and happy for anyone to contribute to!
 
 ## Setup
 
